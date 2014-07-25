@@ -131,6 +131,7 @@ Filter.prototype.processAndCacheFile = function (srcDir, destDir, relativePath) 
 
 Filter.prototype.processFile = function (srcDir, destDir, relativePath) {
   var self = this
+  this._relativePath = relativePath;
   var string = fs.readFileSync(srcDir + '/' + relativePath, { encoding: 'utf8' })
   return Promise.resolve(self.processString(string, relativePath))
     .then(function (outputString) {
